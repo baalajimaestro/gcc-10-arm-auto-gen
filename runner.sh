@@ -16,7 +16,7 @@ apt install python3 -y > /dev/null 2>&1
 python3 strip.py
 chmod 777 telegram
 chmod 777 telegramapi
-apt install sudo git lsb-core apt-utils -y > /dev/null 2>&1
+apt install sudo git lsb-release apt-utils -y > /dev/null 2>&1
 echo 'Initial Dependencies Installed......'
 sudo echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 useradd -m -d /home/ci ci

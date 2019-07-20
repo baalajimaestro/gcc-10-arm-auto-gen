@@ -14,16 +14,16 @@
 build_env()
 {
 . "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"/telegram
+sudo apt install help2man libtool-bin wget curl -y > /dev/null 2>&1
 TELEGRAM_TOKEN=$(cat /tmp/tg_token)
 export TELEGRAM_TOKEN
-tg_sendinfo "<code>[MaestroCI]: ARM-GCC-9.1.1 Compiler Job rolled!</code>"
+tg_sendinfo "<code>[MaestroCI]: ARM-GCC-10 Compiler Job rolled!</code>"
 cd ~
 git clone https://github.com/akhilnarang/scripts > /dev/null 2>&1
 cd scripts
 bash setup/android_build_env.sh  > /dev/null 2>&1
 cd ..
 rm -rf scripts
-sudo apt install help2man libtool-bin wget -y > /dev/null 2>&1
 git clone https://github.com/crosstool-ng/crosstool-ng > /dev/null 2>&1
 cd crosstool-ng
 ./bootstrap > /dev/null 2>&1
@@ -48,7 +48,7 @@ export LOC=$(cat /tmp/loc)
 run()
 {
 echo "Starting build!"
-git clone https://github.com/baalajimaestro/ct-ng-configs -b GCC-9-ARM > /dev/null 2>&1
+git clone https://github.com/baalajimaestro/ct-ng-configs -b GCC-10-ARM > /dev/null 2>&1
 cd ct-ng-configs
 ct-ng build > /dev/null 2>&1
 echo "Build finished!"
@@ -62,11 +62,11 @@ cd $HOME/x-tools/arm-maestro-linux-gnueabi
 
 git init
 git add .
-git checkout -b "$(date +%d%m%y)"
-git commit -m "[MaestroCI]: ARM-GCC-9.1 $(date +%d%m%y)" --signoff
+git checkout -b "$(date +%d%m%y)-10"
+git commit -m "[MaestroCI]: ARM-GCC-10 $(date +%d%m%y)" --signoff
 git remote add origin https://baalajimaestro:$(cat /tmp/GH_TOKEN)@github.com/baalajimaestro/arm-maestro-linux-gnueabi.git
-git push --force origin "$(date +%d%m%y)"
-tg_sendinfo "<code>Checked out and pushed GCC-ARM-9.1</code>"
+git push --force origin "$(date +%d%m%y)-10"
+tg_sendinfo "<code>Checked out and pushed GCC-ARM-10</code>"
 echo "Job Successful!"
 }
 
