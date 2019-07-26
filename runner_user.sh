@@ -19,11 +19,6 @@ TELEGRAM_TOKEN=$(cat /tmp/tg_token)
 export TELEGRAM_TOKEN
 tg_sendinfo "<code>[MaestroCI]: ARM-GCC-10 Compiler Job rolled!</code>"
 cd ~
-git clone https://github.com/akhilnarang/scripts > /dev/null 2>&1
-cd scripts
-bash setup/android_build_env.sh  > /dev/null 2>&1
-cd ..
-rm -rf scripts
 git clone https://github.com/crosstool-ng/crosstool-ng > /dev/null 2>&1
 cd crosstool-ng
 ./bootstrap > /dev/null 2>&1
@@ -50,7 +45,7 @@ run()
 echo "Starting build!"
 git clone https://github.com/baalajimaestro/ct-ng-configs -b GCC-10-ARM > /dev/null 2>&1
 cd ct-ng-configs
-ct-ng build > /dev/null 2>&1
+ct-ng build
 echo "Build finished!"
 }
 

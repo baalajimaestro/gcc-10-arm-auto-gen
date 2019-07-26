@@ -3,7 +3,7 @@ name: MaestroCI Build Bot
 
 steps:
 - name: test
-  image: debian:buster
+  image: baalajimaestro/android_build:latest
   environment:
     API_KEY:
       from_secret: API_KEY
